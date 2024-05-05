@@ -1,0 +1,9 @@
+FROM openjdk:17
+
+EXPOSE 8080
+
+RUN mkdir /app
+
+COPY target/bookstore_backend.jar /app
+
+ENTRYPOINT ["java","-jar","/app/bookstore_backend.jar"]
