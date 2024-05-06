@@ -16,8 +16,9 @@ To run the Bookstore application, follow these steps:
 1. **Clone the Repository**: Clone this repository to your local machine using Git:
 
     git clone https://github.com/Narehs/Azul-BookStore.git
-2. **Navigate to the Project Directory**: Open a terminal and navigate to the directory where the repository was cloned
-3. **Start the Docker Containers**: Start the Docker containers using Docker Compose
+2. Checkout to master branch
+3. **Navigate to the Project Directory**: Open a terminal and navigate to the directory where the repository was cloned
+4. **Start the Docker Containers**: Start the Docker containers using Docker Compose
 
     docker-compose up
 
