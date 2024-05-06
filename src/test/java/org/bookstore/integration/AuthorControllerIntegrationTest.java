@@ -63,7 +63,7 @@ class AuthorControllerIntegrationTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     void testAddAuthor() throws Exception {
-        AuthorDto authorDto = new AuthorDto("nare","salmasian",1234L);
+        AuthorDto authorDto = new AuthorDto("nare", "salmasian", 1234L);
         authorDto.setFirstName("John");
         authorDto.setLastName("Doe");
 
@@ -104,7 +104,7 @@ class AuthorControllerIntegrationTest {
     @Test
     @WithMockUser(roles = "ADMIN")
     void testUpdateAuthor() throws Exception {
-        AuthorDto authorDto = new AuthorDto("Nare","Sal",1234L);
+        AuthorDto authorDto = new AuthorDto("Nare", "Sal", 1234L);
         authorDto.setFirstName("John");
         authorDto.setLastName("Doe");
 

@@ -49,7 +49,7 @@ class AuthorServiceTest {
     void addAuthor() {
         // Given
         AuthorResponse response = new AuthorResponse();
-        AuthorDto dto = new AuthorDto("Name","surname",1234L);
+        AuthorDto dto = new AuthorDto("Name", "surname", 1234L);
         Author author = new Author();
         when(authorMapper.toEntity(dto)).thenReturn(author);
         when(authorRepository.save(author)).thenReturn(author);
@@ -99,7 +99,7 @@ class AuthorServiceTest {
         // Given
         long authorId = 1L;
         AuthorResponse response = new AuthorResponse();
-        AuthorDto dto = new AuthorDto("name","surname",1234L);
+        AuthorDto dto = new AuthorDto("name", "surname", 1234L);
         Author author = new Author();
         when(authorRepository.findById(authorId)).thenReturn(Optional.of(author));
         when(authorMapper.mapToEntity(author, dto)).thenReturn(author);
@@ -121,7 +121,7 @@ class AuthorServiceTest {
     void testUpdateAuthorThenException() {
         // Arrange
         long authorId = 1L;
-        AuthorDto authorDto = new AuthorDto("Name","surname",1234L);
+        AuthorDto authorDto = new AuthorDto("Name", "surname", 1234L);
         authorDto.setFirstName("John");
         authorDto.setLastName("Doe");
 

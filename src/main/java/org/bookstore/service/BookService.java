@@ -50,8 +50,8 @@ public interface BookService {
     /**
      * Updates an existing book.
      *
-     * @param id       The ID of the book to update.
-     * @param bookDto  The updated book data.
+     * @param id      The ID of the book to update.
+     * @param bookDto The updated book data.
      * @return The response containing the updated book data.
      * @throws org.bookstore.exception.BookNotFoundException If the book with the given ID is not found.
      */
@@ -60,8 +60,8 @@ public interface BookService {
     /**
      * Updates an existing book.
      *
-     * @param id       The ID of the book to update.
-     * @param bookDto  The updated book data.
+     * @param id      The ID of the book to update.
+     * @param bookDto The updated book data.
      * @return The response containing the updated book data.
      * @throws org.bookstore.exception.BookNotFoundException If the book with the given ID is not found.
      */

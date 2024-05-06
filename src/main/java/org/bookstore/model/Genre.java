@@ -12,9 +12,9 @@ import java.util.List;
 @Table(name = "Genre")
 @Getter
 @Setter
-public class Genre  extends BaseEntity{
+public class Genre extends BaseEntity {
 
-    @Column(nullable = false, unique=true)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "genres")

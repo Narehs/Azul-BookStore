@@ -12,10 +12,13 @@ public interface BookMapper {
 
 
     BookResponse toResponse(Book entity);
+
     @Mapping(target = "authors", ignore = true)
     @Mapping(target = "genres", ignore = true)
     Book toEntity(BookDto dto);
 
+    @Mapping(target = "authors", ignore = true)
+    @Mapping(target = "genres", ignore = true)
     Book mapToEntity(@MappingTarget Book entity, BookDto dto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

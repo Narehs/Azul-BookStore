@@ -29,7 +29,7 @@ public class GenreServiceImpl implements GenreService {
         log.debug("Adding genre: {}", genreDto.getName());
         return genreRepository.findByName(genreDto.getName())
                 .map(genreMapper::toResponse)
-                .orElseGet(()->genreMapper.toResponse(genreRepository.save(genreMapper.toEntity(genreDto))));
+                .orElseGet(() -> genreMapper.toResponse(genreRepository.save(genreMapper.toEntity(genreDto))));
     }
 
     @Override
@@ -44,6 +44,7 @@ public class GenreServiceImpl implements GenreService {
         log.debug("Fetching genre by Name: {}", name);
         return genreRepository.findByName(name).map(genreMapper::toResponse);
     }
+
     @Override
     public GenreResponse update(Long id, GenreDto genreDto) {
         log.debug("Updating genre with ID: {}", id);

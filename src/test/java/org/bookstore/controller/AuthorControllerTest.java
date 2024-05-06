@@ -31,7 +31,7 @@ class AuthorControllerTest {
     void addAuthor() {
         // Given
         AuthorResponse authorResponse = new AuthorResponse();
-        AuthorDto authorDto = new AuthorDto("nn","ss",1234L);
+        AuthorDto authorDto = new AuthorDto("nn", "ss", 1234L);
         when(authorService.add(any(AuthorDto.class))).thenReturn(authorResponse);
 
         // When
@@ -62,7 +62,7 @@ class AuthorControllerTest {
         // Given
         long authorId = 1L;
         AuthorResponse response = new AuthorResponse();
-        AuthorDto authorDto = new AuthorDto("nn","ss",1234L);
+        AuthorDto authorDto = new AuthorDto("nn", "ss", 1234L);
         when(authorService.update(authorId, authorDto)).thenReturn(response);
 
         // When

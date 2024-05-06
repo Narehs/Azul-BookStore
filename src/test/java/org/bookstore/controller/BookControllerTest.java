@@ -33,7 +33,7 @@ class BookControllerTest {
     @Test
     void addBook() {
         // Given
-        BookDto bookDto = new BookDto("title","123r4L","123",null, Collections.emptyList(), Collections.emptyList());
+        BookDto bookDto = new BookDto("title", "123r4L", "123", null, Collections.emptyList(), Collections.emptyList());
         BookResponse response = new BookResponse();
         when(bookService.add(bookDto)).thenReturn(response);
 
@@ -46,7 +46,7 @@ class BookControllerTest {
     }
 
     @Test
-     void testAssignGenreToBook() {
+    void testAssignGenreToBook() {
 
         Long bookId = 1L;
         Long genreId = 1L;
@@ -82,7 +82,7 @@ class BookControllerTest {
     void updateBook() {
         // Given
         Long bookId = 123L;
-        BookDto bookDto = new BookDto("title","123r4L","123", null, Collections.emptyList(), Collections.emptyList());
+        BookDto bookDto = new BookDto("title", "123r4L", "123", null, Collections.emptyList(), Collections.emptyList());
         BookResponse response = new BookResponse();
         when(bookService.update(bookId, bookDto)).thenReturn(response);
 
@@ -95,7 +95,7 @@ class BookControllerTest {
     }
 
     @Test
-     void testUpdateBookPartially() {
+    void testUpdateBookPartially() {
         // Given
         Long bookId = 1L;
         BookPartialUpdateDto bookDto = new BookPartialUpdateDto("1234");

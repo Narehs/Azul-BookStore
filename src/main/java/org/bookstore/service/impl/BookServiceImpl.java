@@ -25,13 +25,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
-
     private final AuthorService authorService;
     private final GenreService genreService;
     private final BookMapper bookMapper;
@@ -53,7 +54,7 @@ public class BookServiceImpl implements BookService {
 
         for (AuthorDto author : bookDto.getAuthors()) {
             AuthorResponse authorResponse = authorService.add(authorService.getAuthorByFirstNameAndIdentificationNumber(author.getFirstName(), author.getIdentificationNumber())
-                            .map(authorMapper::mapResponseToDto)
+                    .map(authorMapper::mapResponseToDto)
                     .orElse(author));
             book.getAuthors().add(authorMapper.mapResponseToEntity(authorResponse));
         }
@@ -64,7 +65,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookResponse assignGenreToBook(Long bookId, Long genreId) {
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException(String.format("Book with id %d not found", bookId)));
+                .orElseThrow(() -> new BookNotFoundException(String.format("Book with id %s not found", bookId)));
 
         Genre genre = genreMapper.mapResponseToEntity(genreService.getById(genreId));
 
@@ -76,7 +77,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookResponse assignAuthorToBook(Long bookId, Long authorId) {
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException(String.format("Book with id %d not found", bookId)));
+                .orElseThrow(() -> new BookNotFoundException(String.format("Book with id %s not found", bookId)));
 
         Author author = authorMapper.mapResponseToEntity(authorService.getById(authorId));
 
@@ -88,13 +89,13 @@ public class BookServiceImpl implements BookService {
     public BookResponse getById(Long id) {
         log.debug("Fetching book by ID: {}", id);
         return bookMapper.toResponse(bookRepository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException(String.format("Book with id %d not found", id))));
+                .orElseThrow(() -> new BookNotFoundException(String.format("Book with id %s not found", id))));
     }
 
     public BookResponse update(Long id, BookDto bookDto) {
         log.debug("Updating book with ID: {}", id);
         Book book = bookRepository.findById(id).orElseThrow(() ->
-                new BookNotFoundException(String.format("Book with id %d not found", id)));
+                new BookNotFoundException(String.format("Book with id %s not found", id)));
         Book entity = bookMapper.mapToEntity(book, bookDto);
         Book updatedBook = bookRepository.save(entity);
         log.info("Book updated successfully: {}", updatedBook.getTitle());
@@ -107,8 +108,8 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepository.findById(id).orElseThrow(() ->
                 new BookNotFoundException(String.format("Book with id %d not found", id)));
         Book partialMappedToEntity = bookMapper.mapPartialToEntity(bookDto, book);
-        bookDto.getAuthorIds().forEach(aId->assignAuthorToBook(id, aId));
-        bookDto.getGenreIds().forEach(gId->assignGenreToBook(id, gId));
+        Optional.ofNullable(bookDto.getAuthorIds()).ifPresent(ids -> ids.forEach(aId -> assignAuthorToBook(id, aId)));
+        Optional.ofNullable(bookDto.getGenreIds()).ifPresent(ids -> ids.forEach(gId -> assignGenreToBook(id, gId)));
         Book updatedBook = bookRepository.save(partialMappedToEntity);
         log.info("Book updated successfully: {}", updatedBook.getTitle());
         return bookMapper.toResponse(updatedBook);

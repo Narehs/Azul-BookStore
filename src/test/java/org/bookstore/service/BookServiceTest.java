@@ -59,7 +59,7 @@ class BookServiceTest {
     private AuthorServiceImpl authorService;
 
     private BookDto createBookDto() {
-        BookDto bookDto = new BookDto("title","123r4L","123", null, Collections.emptyList(), Collections.emptyList());
+        BookDto bookDto = new BookDto("title", "123r4L", "123", null, Collections.emptyList(), Collections.emptyList());
         bookDto.setGenres(new ArrayList<>());
         bookDto.setAuthors(new ArrayList<>());
 
@@ -67,7 +67,7 @@ class BookServiceTest {
         bookDto.getGenres().add(genreDto);
 
 
-        AuthorDto authorDto = new AuthorDto("Sample First Name","Salmasian",1234L);
+        AuthorDto authorDto = new AuthorDto("Sample First Name", "Salmasian", 1234L);
         bookDto.getAuthors().add(authorDto);
 
         return bookDto;
@@ -79,9 +79,10 @@ class BookServiceTest {
     }
 
     private AuthorDto createAuthorDto() {
-        AuthorDto authorDto = new AuthorDto("Joe","Doe",1234L);
+        AuthorDto authorDto = new AuthorDto("Joe", "Doe", 1234L);
         return authorDto;
     }
+
     private Book createBookEntity(BookDto bookDto) {
         Book book = new Book();
         book.setTitle(bookDto.getTitle());
@@ -155,7 +156,7 @@ class BookServiceTest {
 
 
     @Test
-     void testAssignGenreToBook() {
+    void testAssignGenreToBook() {
         //Given
         Long bookId = 1L;
         Long genreId = 1L;
@@ -312,7 +313,7 @@ class BookServiceTest {
     void updateBookThenBookNotFound() {
         // Given
         long bookId = 1L;
-        BookDto bookDto = new BookDto("title","123r4L","123", null, Collections.emptyList(), Collections.emptyList());
+        BookDto bookDto = new BookDto("title", "123r4L", "123", null, Collections.emptyList(), Collections.emptyList());
         when(bookRepository.findById(bookId)).thenReturn(Optional.empty());
 
         // When, Then

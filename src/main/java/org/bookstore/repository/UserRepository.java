@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByUsernameAndIsEnabledTrue(String username);
+    Optional<User> findByUsernameAndIsEnabled(String username, boolean enable);
+
+    Optional<User> findByUsername(String username);
 }

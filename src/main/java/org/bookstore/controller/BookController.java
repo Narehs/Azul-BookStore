@@ -121,10 +121,11 @@ public class BookController {
     })
     @PatchMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public BookResponse updateBookPartially(@PathVariable Long id,@Valid @RequestBody BookPartialUpdateDto bookDto) {
+    public BookResponse updateBookPartially(@PathVariable Long id, @Valid @RequestBody BookPartialUpdateDto bookDto) {
         log.info("Received request to update book with ID {}: {}", id, bookDto);
         return bookService.updatePartially(id, bookDto);
     }
+
     @Operation(
             summary = "Delete Book",
             description = "Deleting specific Book by Id"
@@ -141,6 +142,7 @@ public class BookController {
         log.info("Received request to delete book with ID: {}", id);
         bookService.delete(id);
     }
+
     @Operation(
             summary = "Getting Books",
             description = "Getting All Books in pagination format"

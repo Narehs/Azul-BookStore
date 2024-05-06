@@ -34,12 +34,12 @@ public class UserServiceimpl implements UserService {
     public UserResponse getById(Long id) {
         log.debug("Fetching user by ID: {}", id);
         return mapper.toResponse(repository.findById(id)
-                .orElseThrow(()-> new UserNotFoundException("User not found")));
+                .orElseThrow(() -> new UserNotFoundException("User not found")));
     }
 
     public Optional<User> getByUsername(String username) {
         log.debug("Fetching user by username: {}", username);
-        return repository.findByUsernameAndIsEnabledTrue(username);
+        return repository.findByUsernameAndIsEnabled(username, true);
     }
 
     @Transactional

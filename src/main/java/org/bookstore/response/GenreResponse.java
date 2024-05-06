@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GenreResponse extends BaseResponse{
+public class GenreResponse extends BaseResponse {
 
     private String name;
 

@@ -11,7 +11,7 @@ import java.util.Optional;
  * Interface of the {@link org.bookstore.service.impl.AuthorServiceImpl}.
  * Provides methods to perform CRUD operations on authors.
  */
-public interface AuthorService{
+public interface AuthorService {
 
     /**
      * Adds a new author.
@@ -24,11 +24,11 @@ public interface AuthorService{
     /**
      * Retrieves an author by their first name and identification number.
      *
-     * @param firstName           The first name of the author.
+     * @param firstName            The first name of the author.
      * @param identificationNumber The identification number of the author.
      * @return An {@link Optional} containing an {@link AuthorResponse} if an author
-     *         with the specified first name and identification number is found,
-     *         otherwise an empty {@link Optional}.
+     * with the specified first name and identification number is found,
+     * otherwise an empty {@link Optional}.
      */
     Optional<AuthorResponse> getAuthorByFirstNameAndIdentificationNumber(String firstName, Long identificationNumber);
 
@@ -44,8 +44,8 @@ public interface AuthorService{
     /**
      * Updates an existing author.
      *
-     * @param id         The ID of the author to update.
-     * @param authorDto  The updated author data.
+     * @param id        The ID of the author to update.
+     * @param authorDto The updated author data.
      * @return The response containing the updated author data.
      * @throws org.bookstore.exception.AuthorNotFoundException If the author with the given ID is not found.
      */
@@ -57,7 +57,7 @@ public interface AuthorService{
      * @param id The ID of the author to delete.
      * @throws org.bookstore.exception.AuthorNotFoundException If the author with the given ID is not found.
      */
-     void delete(Long id);
+    void delete(Long id);
 
     /**
      * Retrieves all authors with pagination.
@@ -65,6 +65,6 @@ public interface AuthorService{
      * @param of The pagination information.
      * @return The page of author responses.
      */
-     Page<AuthorResponse> getAll(PageRequest of);
+    Page<AuthorResponse> getAll(PageRequest of);
 
 }

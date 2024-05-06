@@ -63,11 +63,11 @@ class BookControllerIntegrationTest {
     @WithMockUser(roles = "ADMIN")
     void addBook() throws Exception {
         // Given
-        BookDto bookDto = new BookDto("Sample Book","123r4L","123", null, Collections.emptyList(), Collections.emptyList());
+        BookDto bookDto = new BookDto("Sample Book", "123r4L", "123", null, Collections.emptyList(), Collections.emptyList());
 
         GenreDto genreDto = new GenreDto("Name");
 
-        AuthorDto authorDto = new AuthorDto("Nare", "Salmasian",1234L);
+        AuthorDto authorDto = new AuthorDto("Nare", "Salmasian", 1234L);
         bookDto.setGenres(List.of(genreDto));
         bookDto.setAuthors(List.of(authorDto));
 
@@ -79,7 +79,7 @@ class BookControllerIntegrationTest {
         // When, Then
         mockMvc.perform(post("/api/v1/books")
                         .content(objectMapper.writeValueAsString(bookDto))
-                .with(csrf()).contentType(MediaType.APPLICATION_JSON))
+                        .with(csrf()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.title").value("Sample Book"));
@@ -90,7 +90,7 @@ class BookControllerIntegrationTest {
     void getBookById() throws Exception {
         // Given
         long bookId = 1L;
-        BookDto bookDto = new BookDto("title","123r4L","123", null, Collections.emptyList(), Collections.emptyList());
+        BookDto bookDto = new BookDto("title", "123r4L", "123", null, Collections.emptyList(), Collections.emptyList());
         GenreDto genreDto = new GenreDto("Name");
         genreDto.setName("BIOGRAPHY");
         bookDto.setTitle("Sample Book");
@@ -103,7 +103,7 @@ class BookControllerIntegrationTest {
 
         // When, Then
         mockMvc.perform(get("/api/v1/books/{id}", bookId)
-                .with(csrf()).contentType(MediaType.APPLICATION_JSON))
+                        .with(csrf()).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value(bookId))
@@ -115,7 +115,7 @@ class BookControllerIntegrationTest {
     void updateBook() throws Exception {
         // Given
         long bookId = 1L;
-        BookDto bookDto = new BookDto("title","123r4L","123", null, Collections.emptyList(), Collections.emptyList());
+        BookDto bookDto = new BookDto("title", "123r4L", "123", null, Collections.emptyList(), Collections.emptyList());
         BookResponse bookResponse = new BookResponse();
         bookDto.setTitle("Updated Book");
         bookResponse.setId(bookId);

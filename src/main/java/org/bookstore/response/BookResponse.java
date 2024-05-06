@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookResponse extends BaseResponse{
+public class BookResponse extends BaseResponse {
 
     private String title;
 

@@ -12,15 +12,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BaseResponse {
 
-     private Long id;
+    private Long id;
 
-     @JsonProperty("created_at")
-     private LocalDateTime createdDateTime;
+    @JsonProperty("created_at")
+    private LocalDateTime createdDateTime;
 
-     @JsonProperty("updated_at")
-     private LocalDateTime updatedDateTime;
+    @JsonProperty("updated_at")
+    private LocalDateTime updatedDateTime;
 
-     private String createdBy;
+    private String createdBy;
 
-     private String updatedBy;
+    private String updatedBy;
 }

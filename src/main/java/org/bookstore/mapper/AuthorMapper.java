@@ -15,6 +15,7 @@ public interface AuthorMapper {
     Author toEntity(AuthorDto dto);
 
     AuthorDto toDto(Author entity);
+
     AuthorDto mapResponseToDto(AuthorResponse response);
 
     Author mapToEntity(@MappingTarget Author entity, AuthorDto dto);

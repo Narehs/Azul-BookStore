@@ -31,9 +31,11 @@ public class UserController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "successful creation"),
             @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "401", description = "Unauthorized"),
     })
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public UserResponse createUser(@Valid @RequestBody UserDto userDto) {
         log.info("Received request to create user: {}", userDto);
         UserResponse response = userService.create(userDto);

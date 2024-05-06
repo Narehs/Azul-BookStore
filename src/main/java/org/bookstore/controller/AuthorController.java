@@ -56,6 +56,7 @@ public class AuthorController {
         log.info("Received request to get author by ID: {}", id);
         return authorService.getById(id);
     }
+
     @Operation(
             summary = "Update Author",
             description = "Updating specific Author by Id"
@@ -68,7 +69,7 @@ public class AuthorController {
     })
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public AuthorResponse updateAuthor(@PathVariable Long id,@Valid @RequestBody AuthorDto authorDto) {
+    public AuthorResponse updateAuthor(@PathVariable Long id, @Valid @RequestBody AuthorDto authorDto) {
         log.info("Received request to update author with ID {}: {}", id, authorDto);
         return authorService.update(id, authorDto);
     }

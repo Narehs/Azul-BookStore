@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class UserResponse extends BaseResponse{
+public class UserResponse extends BaseResponse {
     private String name;
 
     private String username;
